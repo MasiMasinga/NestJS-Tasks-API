@@ -68,7 +68,7 @@ export class TasksController {
 
     @Put(':id')
     @UsePipes(new ValidationPipe())
-    async update(@Param('id') id: number, @Body() updateTaskDto: UpdateTaskDto) {
+    async update(@Param('id', ParseIntPipe) id: number, @Body() updateTaskDto: UpdateTaskDto) {
         try {
             const result = await this.tasksService.update(id, updateTaskDto);
             return result;
